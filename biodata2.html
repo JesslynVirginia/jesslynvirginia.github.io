@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Personal Profile</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#eef1f3;
+    --card:#ffffff;
+    --primary:#64748b;
+    --text-main:#1f2933;
+    --text-soft:#6b7280;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:var(--bg);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* ===== APP ===== */
+.app{
+    width:1000px;
+    height:540px;
+    background:var(--card);
+    border-radius:28px;
+    display:flex;
+    box-shadow:0 20px 50px rgba(0,0,0,.12);
+    overflow:hidden;
+}
+
+/* ===== LEFT ===== */
+.left{
+    width:38%;
+    background:linear-gradient(160deg,#dbe4ea,#eef2f5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.photo{
+    width:260px;
+    height:260px;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 18px 35px rgba(0,0,0,.18);
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* ===== RIGHT ===== */
+.right{
+    width:62%;
+    padding:36px 44px;
+    display:flex;
+    flex-direction:column;
+}
+
+/* HEADER */
+.header h1{
+    font-size:28px;
+    letter-spacing:-0.5px;
+    color:var(--text-main);
+}
+.subtitle{
+    font-size:14px;
+    color:var(--text-soft);
+    margin-top:4px;
+}
+
+/* TABS */
+.tabs{
+    display:flex;
+    gap:22px;
+    margin:26px 0;
+}
+.tabs button{
+    background:none;
+    border:none;
+    font-size:14px;
+    color:var(--text-soft);
+    cursor:pointer;
+    position:relative;
+    padding-bottom:6px;
+}
+.tabs button::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0;
+    height:2px;
+    background:var(--primary);
+    transition:.3s;
+}
+.tabs button.active{
+    color:var(--text-main);
+}
+.tabs button.active::after{
+    width:100%;
+}
+
+/* CONTENT */
+.content{
+    flex:1;
+}
+.section{
+    display:none;
+    animation:fade .4s ease;
+}
+.section.active{
+    display:block;
+}
+
+@keyframes fade{
+    from{opacity:0; transform:translateY(6px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.section h3{
+    margin-bottom:10px;
+    color:#374151;
+}
+.section p{
+    font-size:14px;
+    color:#4b5563;
+    line-height:1.7;
+}
+
+/* ===== MUSIC PLAYER ===== */
+.player{
+    background:#f8fafc;
+    border-radius:20px;
+    padding:16px 20px;
+    margin-top:10px;
+}
+
+.song-info{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.song-info span{
+    font-size:14px;
+    color:var(--text-main);
+    font-weight:500;
+}
+
+/* progress */
+.progress{
+    width:100%;
+    height:6px;
+    background:#e5e7eb;
+    border-radius:6px;
+    margin:12px 0;
+    cursor:pointer;
+}
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:var(--primary);
+    border-radius:6px;
+}
+
+/* controls */
+.controls{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.controls button{
+    background:var(--primary);
+    border:none;
+    color:white;
+    padding:8px 18px;
+    border-radius:999px;
+    cursor:pointer;
+}
+
+.time{
+    font-size:12px;
+    color:var(--text-soft);
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- LEFT -->
+    <div class="left">
+        <div class="photo">
+            <img src="foto-kamu.jpg" alt="Profile Photo">
+        </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+        <div class="header">
+            <h1>Your Name</h1>
+            <p class="subtitle">Information Systems Student</p>
+        </div>
+
+        <div class="tabs">
+            <button class="active" onclick="openTab('about')">About</button>
+            <button onclick="openTab('biodata')">Biodata</button>
+            <button onclick="openTab('songs')">Songs</button>
+        </div>
+
+        <div class="content">
+
+            <!-- ABOUT -->
+            <div id="about" class="section active">
+                <h3>About Me</h3>
+                <p>
+                    An 18-year-old Information Systems student with an interest
+                    in technology, digital systems, and clean user interfaces.
+                </p>
+                <p><strong>Hobby:</strong> Music, anime, UI exploration</p>
+            </div>
+
+            <!-- BIODATA -->
+            <div id="biodata" class="section">
+                <h3>Biodata</h3>
+                <p>Name: Your Full Name</p>
+                <p>University: Your University</p>
+                <p>Semester: 2</p>
+                <p>Major: Information Systems</p>
+            </div>
+
+            <!-- SONGS -->
+            <div id="songs" class="section">
+                <h3>Now Playing</h3>
+
+                <div class="player">
+                    <div class="song-info">
+                        <span>Favorite Song</span>
+                        <span class="time" id="currentTime">0:00</span>
+                    </div>
+
+                    <div class="progress" onclick="setProgress(event)">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+
+                    <div class="controls">
+                        <button onclick="togglePlay()">Play / Pause</button>
+                        <span class="time" id="duration">0:00</span>
+                    </div>
+                </div>
+
+                <audio id="audio" src="lagu-favorit.mp3"></audio>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+const audio = document.getElementById("audio");
+const progressBar = document.getElementById("progressBar");
+const currentTimeEl = document.getElementById("currentTime");
+const durationEl = document.getElementById("duration");
+
+/* TAB */
+function openTab(tab){
+    document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+    document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+    document.getElementById(tab).classList.add("active");
+    event.target.classList.add("active");
+}
+
+/* PLAY / PAUSE */
+function togglePlay(){
+    audio.paused ? audio.play() : audio.pause();
+}
+
+/* UPDATE TIME */
+audio.addEventListener("timeupdate", ()=>{
+    const percent = (audio.currentTime / audio.duration) * 100;
+    progressBar.style.width = percent + "%";
+
+    currentTimeEl.textContent = formatTime(audio.currentTime);
+    durationEl.textContent = formatTime(audio.duration);
+});
+
+/* SET PROGRESS */
+function setProgress(e){
+    const width = e.currentTarget.clientWidth;
+    const clickX = e.offsetX;
+    audio.currentTime = (clickX / width) * audio.duration;
+}
+
+function formatTime(time){
+    if(isNaN(time)) return "0:00";
+    const min = Math.floor(time / 60);
+    const sec = Math.floor(time % 60).toString().padStart(2,"0");
+    return `${min}:${sec}`;
+}
+</script>
+
+</body>
+</html>
