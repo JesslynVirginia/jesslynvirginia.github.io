@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jesslyn Virginia</title>
+
+<!-- Google Fonts: Cormorant for elegant headings, Poppins for body text -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================================
+   RESET - remove browser defaults
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================================
+   BODY - page background
+================================ */
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+
+    /* warm cream gradient background */
+    background: linear-gradient(135deg, #f0ebe3 0%, #e2d5c3 100%);
+}
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+/* ================================
+   CARD - main container
+================================ */
+.card {
+    width: 960px;
+    max-width: 100%;
+    min-height: 540px;
+    background: rgba(255, 252, 247, 0.85);
+    border-radius: 24px;
+    display: flex;
+    box-shadow: 0 8px 32px rgba(42, 33, 24, 0.10),
+                0 2px 8px  rgba(42, 33, 24, 0.06);
+
+    /* slide-up animation when page loads */
+    animation: appear 0.7s ease both;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================
+   LEFT PANEL - photo
+================================ */
+.left-panel {
+    width: 36%;
+    background: linear-gradient(155deg, #e8ddd0, #d4c5b0);
+    border-radius: 24px 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 30px;
+    gap: 16px;
+}
+
+.photo-wrap {
+    width: 240px;
+    height: 300px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(42, 33, 24, 0.18);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.photo-wrap:hover {
+    transform: scale(1.04) rotate(0.5deg);
+    box-shadow: 0 18px 40px rgba(42, 33, 24, 0.25);
+}
+
+.photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* small label below photo */
+.photo-label {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #9c8060;
+    text-align: center;
+}
+
+/* decorative gold line */
+.gold-line {
+    width: 36px;
+    height: 1.5px;
+    background: #c9a96e;
+    border-radius: 2px;
+}
+
+/* ================================
+   RIGHT PANEL - content
+================================ */
+.right-panel {
+    flex: 1;
+    padding: 44px 52px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-width: 0; /* prevents flex child from overflowing */
+    overflow: hidden;
+}
+
+/* big name heading */
+.name-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    color: #2a2118;
+    line-height: 1.1;
+    margin-bottom: 32px;
+}
+
+
+/* small badge top right */
+.badge {
+    position: absolute;
+    top: 44px;
+    right: 52px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c9a96e;
+    border: 1px solid #e8d5b0;
+    padding: 5px 12px;
+    border-radius: 4px;
+}
+
+/* ================================
+   TABS - navigation buttons
+================================ */
+.tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #e8d5b0;
+    margin-bottom: 30px;
+}
+
+.tabs button {
+    background: none;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #c9a96e;
+    cursor: pointer;
+    padding: 0 18px 14px;
+    border-bottom: 1.5px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.25s, border-color 0.25s;
+}
+
+.tabs button:first-child {
+    padding-left: 0;
+}
+
+.tabs button:hover {
+    color: #8b6f47;
+}
+
+.tabs button.active {
+    color: #2a2118;
+    border-bottom-color: #c9a96e;
+}
+
+/* ================================
+   SECTIONS - content for each tab
+================================ */
+.section {
+    display: none;
+    min-width: 0;
+}
+
+.section.active {
+    display: block;
+    animation: fadeUp 0.35s ease both;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* section heading */
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #2a2118;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* short decorative line after heading */
+.section-title::after {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: #c9a96e;
+}
+
+/* ================================
+   ABOUT
+================================ */
+#about p {
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: #6b5c45;
+    font-weight: 300;
+    max-width: 460px;
+}
+
+#about a {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #c9a96e;
+    text-decoration: none;
+    border-bottom: 1px solid #e8d5b0;
+    padding-bottom: 2px;
+    transition: color 0.2s;
+}
+
+#about a:hover {
+    color: #8b6f47;
+}
+
+.quote {
+    margin-top: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #9c8060;
+    border-left: 2px solid #e8d5b0;
+    padding-left: 14px;
+    line-height: 1.6;
+}
+
+/* ================================
+   BIODATA
+================================ */
+.bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+}
+
+.bio-item {
+    padding: 11px 14px;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid #e8d5b0;
+    border-radius: 6px;
+}
+
+.bio-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c9a96e;
+    margin-bottom: 4px;
+}
+
+.bio-value {
+    font-size: 13px;
+    color: #2a2118;
+}
+
+/* ================================
+   PLAYLIST
+================================ */
+.song-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 16px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #e8d5b0;
+    border-radius: 6px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.song-item:hover,
+.song-item.playing {
+    background: rgba(201, 169, 110, 0.08);
+    border-color: rgba(201, 169, 110, 0.5);
+}
+
+.song-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: #c9a96e;
+    min-width: 22px;
+}
+
+.song-info {
+    flex: 1;
+}
+
+.song-title {
+    font-size: 13.5px;
+    color: #2a2118;
+}
+
+.song-artist {
+    font-size: 11px;
+    color: #c9a96e;
+    margin-top: 2px;
+}
+
+.play-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #e8d5b0;
+    background: white;
+    color: #8b6f47;
+    font-size: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.play-btn:hover {
+    background: #c9a96e;
+    color: white;
+    transform: scale(1.1);
+}
+
+.play-btn.paused {
+    background: #c9a96e;
+    color: white;
+}
+
+/* ================================
+   HOBBIES
+================================ */
+.hobby-row {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.hobby-row::-webkit-scrollbar { height: 3px; }
+.hobby-row::-webkit-scrollbar-thumb {
+    background: #e8d5b0;
+    border-radius: 2px;
+}
+
+.hobby-card {
+    flex: 0 0 148px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #e8d5b0;
+    background: rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hobby-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(42, 33, 24, 0.10);
+}
+
+.hobby-card img {
+    width: 100%;
+    height: 105px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.hobby-card:hover img {
+    transform: scale(1.07);
+}
+
+.hobby-info {
+    padding: 10px 12px;
+}
+
+.hobby-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #2a2118;
+}
+
+.hobby-desc {
+    font-size: 11px;
+    color: #c9a96e;
+    margin-top: 3px;
+    line-height: 1.4;
+}
+
+.hobby-note {
+    margin-top: 14px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #9c8060;
+}
+
+/* ================================
+   SCHEDULE
+================================ */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.schedule-table thead th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c9a96e;
+    font-weight: 400;
+    border-bottom: 1px solid #e8d5b0;
+}
+
+.schedule-table tbody td {
+    padding: 10px 14px;
+    color: #6b5c45;
+    border-bottom: 1px solid #f5ede0;
+    transition: background 0.2s;
+}
+
+.schedule-table tbody td:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #8b6f47;
+}
+
+.schedule-table tbody tr:hover td {
+    background: rgba(201, 169, 110, 0.05);
+}
+
+/* ================================
+   RESPONSIVE - mobile view
+================================ */
+@media (max-width: 720px) {
+    .card {
+        flex-direction: column;
+    }
+    .left-panel {
+        width: 100%;
+        border-radius: 24px 24px 0 0;
+        padding: 36px 20px;
+    }
+    .right-panel {
+        padding: 32px 24px;
+    }
+    .name-title {
+        font-size: 28px;
+    }
+    .bio-grid {
+        grid-template-columns: 1fr;
+    }
+    .badge {
+        display: none;
+    }
+}
+
+</style>
+</head>
+<body>
+<main>
+    <div class="card">
+
+    <!-- ===== LEFT PANEL ===== -->
+        <div class="left-panel">
+            <div class="photo-wrap">
+                <img src="Photo.jpeg" alt="Jesslyn Virginia">
+            </div>
+            <div class="gold-line"></div>
+            <p class="photo-label">Information Systems · UIB</p>
+        </div>
+
+    <!-- ===== RIGHT PANEL ===== -->
+        <div class="right-panel">
+
+        <!-- badge top right corner -->
+            <div class="badge">Profile · 2025</div>
+
+        <!-- big name -->
+            <h1 class="name-title">Jesslyn Virginia</h1>
+
+        <!-- TABS -->
+        
+            <nav class="tabs">
+                <button class="active" onclick="openTab('about', this)">About</button>
+                <button onclick="openTab('biodata', this)">Biodata</button>
+                <button onclick="openTab('playlist', this)">Playlist</button>
+                <button onclick="openTab('hobby', this)">Hobbies</button>
+                <button onclick="openTab('schedule', this)">Schedule</button>
+            </nav>
+
+        <!-- ===== ABOUT ===== -->
+            <section id="about" class="section active">
+                <p class="section-title">About Me</p>
+                <p>
+                    An 18-year-old student at Universitas Internasional Batam, pursuing a
+                    Bachelor's in Information Systems. I find peace in music, painting, and
+                    quiet moments with my own thoughts. Some days I feel motivated, other days
+                    I feel lost, but I'm learning it's okay to move at my own pace.
+                </p>
+                <a href="https://www.instagram.com/jesslynvirginiaa/" target="_blank">↗ Instagram</a>
+                <blockquote class="quote">
+                    "I'm still figuring things out — and that's perfectly okay."
+                </blockquote>
+            </section>
+
+        <!-- ===== BIODATA ===== -->
+            <section id="biodata" class="section">
+                <p class="section-title">Biodata</p>
+                <div class="bio-grid">
+                    <div class="bio-item">
+                        <div class="bio-label">Full Name</div>
+                        <div class="bio-value">Jesslyn Virginia</div>
+                    </div>
+                    <div class="bio-item">
+                        <div class="bio-label">Student ID</div>
+                        <div class="bio-value">2531041</div>
+                    </div>
+                    <div class="bio-item">
+                        <div class="bio-label">Major</div>
+                        <div class="bio-value">Information Systems</div>
+                    </div>
+                    <div class="bio-item">
+                        <div class="bio-label">University</div>
+                        <div class="bio-value">Universitas Internasional Batam</div>
+                    </div>
+                    <div class="bio-item">
+                        <div class="bio-label">Semester</div>
+                        <div class="bio-value">2</div>
+                    </div>
+                    <div class="bio-item">
+                        <div class="bio-label">Email</div>
+                        <div class="bio-value">jesslynvirginia2@gmail.com</div>
+                    </div>
+                </div>
+            </section>
+
+        <!-- ===== PLAYLIST ===== -->
+            <section id="playlist" class="section">
+                <p class="section-title">Playlist</p>
+                <div class="song-list">
+
+                    <div class="song-item" id="item-song1">
+                        <span class="song-number">01</span>
+                        <div class="song-info">
+                            <div class="song-title">梦臆</div>
+                            <div class="song-artist">邹沛沛</div>
+                        </div>
+                        <button class="play-btn" onclick="playSong('song1', this, 'item-song1')">▶</button>
+                    </div>
+
+                    <div class="song-item" id="item-song2">
+                        <span class="song-number">02</span>
+                        <div class="song-info">
+                            <div class="song-title">惦念你</div>
+                            <div class="song-artist">邹沛沛</div>
+                        </div>
+                        <button class="play-btn" onclick="playSong('song2', this, 'item-song2')">▶</button>
+                    </div>
+
+                    <div class="song-item" id="item-song3">
+                        <span class="song-number">03</span>
+                        <div class="song-info">
+                            <div class="song-title">沉溺</div>
+                            <div class="song-artist">邹沛沛</div>
+                        </div>
+                        <button class="play-btn" onclick="playSong('song3', this, 'item-song3')">▶</button>
+                    </div>
+
+                    <div class="song-item" id="item-song4">
+                        <span class="song-number">04</span>
+                        <div class="song-info">
+                            <div class="song-title">恋人未满</div>
+                            <div class="song-artist">胜屿</div>
+                        </div>
+                        <button class="play-btn" onclick="playSong('song4', this, 'item-song4')">▶</button>
+                    </div>
+
+                </div>
+
+            <!-- hidden audio files -->
+                <audio id="song1" src="mengyi.mp3"></audio>
+                <audio id="song2" src="dnn.mp3"></audio>
+                <audio id="song3" src="chenni.mp3"></audio>
+                <audio id="song4" src="lrwm.mp3"></audio>
+            </section>
+
+        <!-- ===== HOBBIES ===== -->
+            <section id="hobby" class="section">
+                <p class="section-title">Hobbies</p>
+                <div class="hobby-row">
+
+                    <figure class="hobby-card">
+                        <img src="Painting.jpeg" alt="Painting">
+                        <figcaption class="hobby-info">
+                            <div class="hobby-name">Painting</div>
+                            <div class="hobby-desc">Emotions through color</div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="hobby-card">
+                        <img src="digi.jpeg" alt="Digital Art">
+                        <figcaption class="hobby-info">
+                            <div class="hobby-name">Digital Art</div>
+                            <div class="hobby-desc">Thoughts brought to life</div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="hobby-card">
+                        <img src="digi2.jpeg" alt="Digital Art">
+                        <figcaption class="hobby-info">
+                            <div class="hobby-name">Digital Art</div>
+                            <div class="hobby-desc">Blending colors freely</div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="hobby-card">
+                        <img src="flower.jpeg" alt="Flower Arrangement">
+                        <figcaption class="hobby-info">
+                            <div class="hobby-name">Florals</div>
+                            <div class="hobby-desc">Calm in every bloom</div>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="hobby-card">
+                        <img src="crochet.jpeg" alt="Crochet">
+                        <figcaption class="hobby-info">
+                            <div class="hobby-name">Crochet</div>
+                            <div class="hobby-desc">Handcrafted with love</div>
+                        </figcaption>
+                    </figure>
+
+                </div>
+                <p class="hobby-note">These hobbies help me balance study and life.</p>
+            </section>
+
+        <!-- ===== SCHEDULE ===== -->
+            <section id="schedule" class="section">
+                <p class="section-title">Class Schedule</p>
+                <div style="overflow-x: auto;">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Time</th>
+                                <th>Course</th>
+                                <th>Room</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Monday</td>   <td>09:00 – 10:40</td><td>English II</td>        <td>A412</td></tr>
+                            <tr><td>Monday</td>   <td>13:10 – 15:40</td><td>Operating Systems</td> <td>A314</td></tr>
+                            <tr><td>Monday</td>   <td>20:35 – 22:15</td><td>Pancasila</td>         <td>Online</td></tr>
+                            <tr><td>Tuesday</td>  <td>09:00 – 11:30</td><td>Database Systems</td>  <td>A316</td></tr>
+                            <tr><td>Tuesday</td>  <td>13:10 – 15:40</td><td>Web Design</td>        <td>A316</td></tr>
+                            <tr><td>Wednesday</td><td>09:00 – 11:30</td><td>Data Structures</td>   <td>A406</td></tr>
+                            <tr><td>Wednesday</td><td>13:10 – 15:40</td><td>2D Animation</td>      <td>A406</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+</main>
+<!-- ================================
+     JAVASCRIPT
+================================ -->
+<script>
+
+// ---- SWITCH TAB FUNCTION ----
+function openTab(tabName, button) {
+
+    // 1. hide all sections
+    document.querySelectorAll('.section').forEach(function(s) {
+        s.classList.remove('active');
+    });
+
+    // 2. deactivate all tab buttons
+    document.querySelectorAll('.tabs button').forEach(function(b) {
+        b.classList.remove('active');
+    });
+
+    // 3. show the selected section
+    document.getElementById(tabName).classList.add('active');
+
+    // 4. mark the clicked button as active
+    button.classList.add('active');
+}
+
+
+// ---- PLAY / PAUSE SONG FUNCTION ----
+function playSong(songId, button, itemId) {
+
+    // get the audio element by id
+    var song = document.getElementById(songId);
+
+    // 1. stop all other songs first
+    document.querySelectorAll('audio').forEach(function(a) {
+        if (a !== song) {
+            a.pause();
+            a.currentTime = 0;
+        }
+    });
+
+    // 2. reset all buttons and row highlights
+    document.querySelectorAll('.play-btn').forEach(function(b) {
+        b.textContent = '▶';
+        b.classList.remove('paused');
+    });
+    document.querySelectorAll('.song-item').forEach(function(item) {
+        item.classList.remove('playing');
+    });
+
+    // 3. play or pause the clicked song
+    if (song.paused) {
+        song.play();
+        button.textContent = '⏸';
+        button.classList.add('paused');
+        document.getElementById(itemId).classList.add('playing');
+    } else {
+        song.pause();
+        button.textContent = '▶';
+        button.classList.remove('paused');
+    }
+}
+
+</script>
+
+</body>
+</html>
