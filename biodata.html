@@ -1,562 +1,614 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Jesslyn Virginia</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesslyn Virginia</title>
 
-<!-- Google Fonts: Cormorant for elegant headings, Poppins for body text -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-<style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* ================================
-   RESET - remove browser defaults
-================================ */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
 
-/* ================================
-   BODY - page background
-================================ */
-body {
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 20px;
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0ebe3 0%, #e2d5c3 100%);
+            color: #2a2118;
+            min-height: 100vh;
+        }
 
-    /* warm cream gradient background */
-    background: linear-gradient(135deg, #f0ebe3 0%, #e2d5c3 100%);
-}
+        header {
+            background: rgba(255, 252, 247, 0.95);
+            padding: 20px 0;
+            box-shadow: 0 2px 8px rgba(42, 33, 24, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-/* ================================
-   CARD - main container
-================================ */
-.card {
-    width: 960px;
-    max-width: 100%;
-    min-height: 540px;
-    background: rgba(255, 252, 247, 0.85);
-    border-radius: 24px;
-    display: flex;
-    box-shadow: 0 8px 32px rgba(42, 33, 24, 0.10),
-                0 2px 8px  rgba(42, 33, 24, 0.06);
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    /* slide-up animation when page loads */
-    animation: appear 0.7s ease both;
-}
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2a2118;
+        }
 
-@keyframes appear {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
+        nav {
+            display: flex;
+            gap: 30px;
+        }
 
-/* ================================
-   LEFT PANEL - photo
-================================ */
-.left-panel {
-    width: 36%;
-    background: linear-gradient(155deg, #e8ddd0, #d4c5b0);
-    border-radius: 24px 0 0 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 50px 30px;
-    gap: 16px;
-}
+        nav a {
+            text-decoration: none;
+            color: #6b5c45;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-.photo-wrap {
-    width: 240px;
-    height: 300px;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(42, 33, 24, 0.18);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
+        nav a:hover {
+            color: #c9a96e;
+        }
 
-.photo-wrap:hover {
-    transform: scale(1.04) rotate(0.5deg);
-    box-shadow: 0 18px 40px rgba(42, 33, 24, 0.25);
-}
+        .container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: 220px 1fr 220px;
+            gap: 30px;
+            align-items: start;
+        }
 
-.photo-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+        /* ================================
+           LEFT ASIDE
+        ================================ */
+        .left-aside {
+            background: rgba(255, 252, 247, 0.9);
+            border: 1px solid #e8d5b0;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(42, 33, 24, 0.08);
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
 
-/* small label below photo */
-.photo-label {
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: #9c8060;
-    text-align: center;
-}
+        .aside-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2a2118;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8d5b0;
+        }
 
-/* decorative gold line */
-.gold-line {
-    width: 36px;
-    height: 1.5px;
-    background: #c9a96e;
-    border-radius: 2px;
-}
+        .aside-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-/* ================================
-   RIGHT PANEL - content
-================================ */
-.right-panel {
-    flex: 1;
-    padding: 44px 52px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    min-width: 0; /* prevents flex child from overflowing */
-    overflow: hidden;
-}
+        .aside-item {
+            font-size: 0.9rem;
+            color: #6b5c45;
+        }
 
-/* big name heading */
-.name-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 38px;
-    font-weight: 300;
-    color: #2a2118;
-    line-height: 1.1;
-    margin-bottom: 32px;
-}
+        .aside-item label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #c9a96e;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 3px;
+        }
 
+        .aside-item a {
+            color: #c9a96e;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
 
-/* small badge top right */
-.badge {
-    position: absolute;
-    top: 44px;
-    right: 52px;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #c9a96e;
-    border: 1px solid #e8d5b0;
-    padding: 5px 12px;
-    border-radius: 4px;
-}
+        .aside-item a:hover {
+            color: #2a2118;
+        }
 
-/* ================================
-   TABS - navigation buttons
-================================ */
-.tabs {
-    display: flex;
-    gap: 0;
-    border-bottom: 1px solid #e8d5b0;
-    margin-bottom: 30px;
-}
+        /* ================================
+           MAIN CONTENT
+        ================================ */
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
 
-.tabs button {
-    background: none;
-    border: none;
-    font-family: 'Poppins', sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #c9a96e;
-    cursor: pointer;
-    padding: 0 18px 14px;
-    border-bottom: 1.5px solid transparent;
-    margin-bottom: -1px;
-    transition: color 0.25s, border-color 0.25s;
-}
+        .hero {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            background: rgba(255, 252, 247, 0.9);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(42, 33, 24, 0.08);
+        }
 
-.tabs button:first-child {
-    padding-left: 0;
-}
+        .hero-photo {
+            flex-shrink: 0;
+        }
 
-.tabs button:hover {
-    color: #8b6f47;
-}
+        .photo-wrap {
+            width: 200px;
+            height: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(42, 33, 24, 0.15);
+            transition: transform 0.4s ease;
+        }
 
-.tabs button.active {
-    color: #2a2118;
-    border-bottom-color: #c9a96e;
-}
+        .photo-wrap:hover {
+            transform: scale(1.04) rotate(0.5deg);
+        }
 
-/* ================================
-   SECTIONS - content for each tab
-================================ */
-.section {
-    display: none;
-    min-width: 0;
-}
+        .photo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.section.active {
-    display: block;
-    animation: fadeUp 0.35s ease both;
-}
+        .hero-content {
+            flex: 1;
+        }
 
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
+        .hero-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2a2118;
+        }
 
-/* section heading */
-.section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 400;
-    color: #2a2118;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+        .hero-content p {
+            font-size: 0.95rem;
+            color: #6b5c45;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
 
-/* short decorative line after heading */
-.section-title::after {
-    content: '';
-    display: inline-block;
-    width: 28px;
-    height: 1px;
-    background: #c9a96e;
-}
+        .hero-content a {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #c9a96e;
+            text-decoration: none;
+            border-bottom: 1px solid #e8d5b0;
+            padding-bottom: 2px;
+            transition: color 0.2s;
+        }
 
-/* ================================
-   ABOUT
-================================ */
-#about p {
-    font-size: 13.5px;
-    line-height: 1.9;
-    color: #6b5c45;
-    font-weight: 300;
-    max-width: 460px;
-}
+        .hero-content a:hover {
+            color: #8b6f47;
+        }
 
-#about a {
-    display: inline-block;
-    margin-top: 12px;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #c9a96e;
-    text-decoration: none;
-    border-bottom: 1px solid #e8d5b0;
-    padding-bottom: 2px;
-    transition: color 0.2s;
-}
+        .card {
+            background: rgba(255, 252, 247, 0.9);
+            border: 1px solid #e8d5b0;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(42, 33, 24, 0.08);
+        }
 
-#about a:hover {
-    color: #8b6f47;
-}
+        .card h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2a2118;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-.quote {
-    margin-top: 20px;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 16px;
-    color: #9c8060;
-    border-left: 2px solid #e8d5b0;
-    padding-left: 14px;
-    line-height: 1.6;
-}
+        .card h2::after {
+            content: '';
+            display: inline-block;
+            width: 28px;
+            height: 1px;
+            background: #c9a96e;
+        }
 
-/* ================================
-   BIODATA
-================================ */
-.bio-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 20px;
-}
+        /* BIODATA */
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
 
-.bio-item {
-    padding: 11px 14px;
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid #e8d5b0;
-    border-radius: 6px;
-}
+        .bio-item {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 12px 15px;
+            border: 1px solid #e8d5b0;
+            border-radius: 6px;
+        }
 
-.bio-label {
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #c9a96e;
-    margin-bottom: 4px;
-}
+        .bio-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #c9a96e;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
 
-.bio-value {
-    font-size: 13px;
-    color: #2a2118;
-}
+        .bio-value {
+            font-size: 0.95rem;
+            color: #2a2118;
+            font-weight: 500;
+        }
 
-/* ================================
-   PLAYLIST
-================================ */
-.song-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
+        /* HOBBIES */
+        .hobby-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
 
-.song-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 11px 16px;
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid #e8d5b0;
-    border-radius: 6px;
-    transition: background 0.2s, border-color 0.2s;
-}
+        .hobby-gallery figure:nth-child(4) {
+            grid-column: 1 / span 1;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
 
-.song-item:hover,
-.song-item.playing {
-    background: rgba(201, 169, 110, 0.08);
-    border-color: rgba(201, 169, 110, 0.5);
-}
+        .hobby-gallery figure:nth-child(5) {
+            grid-column: 2 / span 1;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
 
-.song-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 16px;
-    color: #c9a96e;
-    min-width: 22px;
-}
+        .hobby-card {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e8d5b0;
+            background: rgba(255, 255, 255, 0.6);
+            transition: all 0.3s ease;
+            position: relative;
+        }
 
-.song-info {
-    flex: 1;
-}
+        .hobby-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 24px rgba(42, 33, 24, 0.1);
+        }
 
-.song-title {
-    font-size: 13.5px;
-    color: #2a2118;
-}
+        .hobby-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            display: block;
+        }
 
-.song-artist {
-    font-size: 11px;
-    color: #c9a96e;
-    margin-top: 2px;
-}
+        .hobby-card:hover img {
+            transform: scale(1.08);
+        }
 
-.play-btn {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 1px solid #e8d5b0;
-    background: white;
-    color: #8b6f47;
-    font-size: 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s, color 0.2s, transform 0.2s;
-}
+        .hobby-info {
+            padding: 8px 6px;
+            text-align: center;
+        }
 
-.play-btn:hover {
-    background: #c9a96e;
-    color: white;
-    transform: scale(1.1);
-}
+        .hobby-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #2a2118;
+            letter-spacing: 0.3px;
+        }
 
-.play-btn.paused {
-    background: #c9a96e;
-    color: white;
-}
+        .hobby-desc {
+            font-size: 0.7rem;
+            color: #c9a96e;
+            margin-top: 3px;
+            line-height: 1.2;
+        }
 
-/* ================================
-   HOBBIES
-================================ */
-.hobby-row {
-    display: flex;
-    gap: 12px;
-    overflow-x: auto;
-    padding-bottom: 8px;
-    max-width: 100%;
-    min-width: 0;
-}
+        /* PLAYLIST */
+        .song-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
 
-.hobby-row::-webkit-scrollbar { height: 3px; }
-.hobby-row::-webkit-scrollbar-thumb {
-    background: #e8d5b0;
-    border-radius: 2px;
-}
+        .song-card {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 15px;
+            border: 1px solid #e8d5b0;
+            border-radius: 6px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
 
-.hobby-card {
-    flex: 0 0 148px;
-    border-radius: 6px;
-    overflow: hidden;
-    border: 1px solid #e8d5b0;
-    background: rgba(255, 255, 255, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .song-card:hover {
+            background: rgba(201, 169, 110, 0.08);
+            border-color: rgba(201, 169, 110, 0.5);
+        }
 
-.hobby-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(42, 33, 24, 0.10);
-}
+        .song-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #c9a96e;
+        }
 
-.hobby-card img {
-    width: 100%;
-    height: 105px;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-}
+        .song-title {
+            font-size: 0.95rem;
+            color: #2a2118;
+            font-weight: 500;
+            margin: 8px 0 5px 0;
+        }
 
-.hobby-card:hover img {
-    transform: scale(1.07);
-}
+        .song-artist {
+            font-size: 0.85rem;
+            color: #c9a96e;
+            margin-bottom: 10px;
+        }
 
-.hobby-info {
-    padding: 10px 12px;
-}
+        .play-btn {
+            background: #c9a96e;
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.hobby-name {
-    font-size: 12px;
-    font-weight: 500;
-    color: #2a2118;
-}
+        .play-btn:hover {
+            background: #8b6f47;
+            transform: scale(1.1);
+        }
 
-.hobby-desc {
-    font-size: 11px;
-    color: #c9a96e;
-    margin-top: 3px;
-    line-height: 1.4;
-}
+        /* SCHEDULE */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
 
-.hobby-note {
-    margin-top: 14px;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 13px;
-    color: #9c8060;
-}
+        .schedule-table thead {
+            background: rgba(201, 169, 110, 0.1);
+        }
 
-/* ================================
-   SCHEDULE
-================================ */
-.schedule-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-    margin-top: 4px;
-}
+        .schedule-table th {
+            padding: 12px;
+            text-align: left;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #c9a96e;
+            font-weight: 600;
+            border-bottom: 1px solid #e8d5b0;
+        }
 
-.schedule-table thead th {
-    text-align: left;
-    padding: 10px 14px;
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #c9a96e;
-    font-weight: 400;
-    border-bottom: 1px solid #e8d5b0;
-}
+        .schedule-table td {
+            padding: 12px;
+            color: #6b5c45;
+            border-bottom: 1px solid #e8d5b0;
+            font-size: 0.9rem;
+        }
 
-.schedule-table tbody td {
-    padding: 10px 14px;
-    color: #6b5c45;
-    border-bottom: 1px solid #f5ede0;
-    transition: background 0.2s;
-}
+        .schedule-table tbody tr:hover {
+            background: rgba(201, 169, 110, 0.05);
+        }
 
-.schedule-table tbody td:first-child {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 15px;
-    color: #8b6f47;
-}
+        /* ================================
+           RIGHT ASIDE
+        ================================ */
+        .right-aside {
+            background: rgba(255, 252, 247, 0.9);
+            border: 1px solid #e8d5b0;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(42, 33, 24, 0.08);
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
 
-.schedule-table tbody tr:hover td {
-    background: rgba(201, 169, 110, 0.05);
-}
+        .stat-box {
+            text-align: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e8d5b0;
+        }
 
-/* ================================
-   RESPONSIVE - mobile view
-================================ */
-@media (max-width: 720px) {
-    .card {
-        flex-direction: column;
-    }
-    .left-panel {
-        width: 100%;
-        border-radius: 24px 24px 0 0;
-        padding: 36px 20px;
-    }
-    .right-panel {
-        padding: 32px 24px;
-    }
-    .name-title {
-        font-size: 28px;
-    }
-    .bio-grid {
-        grid-template-columns: 1fr;
-    }
-    .badge {
-        display: none;
-    }
-}
+        .stat-box:last-child {
+            border-bottom: none;
+        }
 
-</style>
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #c9a96e;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9c8060;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        footer {
+            background: rgba(42, 33, 24, 0.9);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+
+        footer a {
+            color: #c9a96e;
+            text-decoration: none;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .left-aside,
+            .right-aside {
+                position: static;
+                width: 100%;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .bio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .song-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hobby-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .song-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
-<main>
-    <div class="card">
 
-    <!-- ===== LEFT PANEL ===== -->
-        <div class="left-panel">
-            <div class="photo-wrap">
-                <img src="Photo.jpeg" alt="Jesslyn Virginia">
-            </div>
-            <div class="gold-line"></div>
-            <p class="photo-label">Information Systems · UIB</p>
-        </div>
-
-    <!-- ===== RIGHT PANEL ===== -->
-        <div class="right-panel">
-
-        <!-- badge top right corner -->
-            <div class="badge">Profile · 2026</div>
-
-        <!-- big name -->
-            <h1 class="name-title">Jesslyn Virginia</h1>
-
-        <!-- TABS -->
-        
-            <nav class="tabs">
-                <button class="active" onclick="openTab('about', this)">About</button>
-                <button onclick="openTab('biodata', this)">Biodata</button>
-                <button onclick="openTab('playlist', this)">Playlist</button>
-                <button onclick="openTab('hobby', this)">Hobbies</button>
-                <button onclick="openTab('schedule', this)">Schedule</button>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <h1>Jesslyn Virginia</h1>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#biodata">Biodata</a>
+                <a href="#hobbies">Hobbies</a>
+                <a href="#playlist">Playlist</a>
+                <a href="#schedule">Schedule</a>
             </nav>
+        </div>
+    </header>
 
-        <!-- ===== ABOUT ===== -->
-            <section id="about" class="section active">
-                <p class="section-title">About Me</p>
-                <p>
-                    An 18-year-old student at Universitas Internasional Batam, pursuing a
-                    Bachelor's in Information Systems. I find peace in music, painting, and
-                    quiet moments with my own thoughts. Some days I feel motivated, other days
-                    I feel lost, but I'm learning it's okay to move at my own pace.
-                </p>
-                <a href="https://www.instagram.com/jesslynvirginiaa/" target="_blank">↗ Instagram</a>
-                <blockquote class="quote">
-                    "I'm still figuring things out — and that's perfectly okay."
-                </blockquote>
+    <!-- MAIN LAYOUT -->
+    <div class="container">
+
+        <!-- LEFT ASIDE -->
+        <aside class="left-aside">
+            <h3 class="aside-title">Quick Info</h3>
+            <div class="aside-content">
+                <div class="aside-item">
+                    <label>Full Name</label>
+                    Jesslyn Virginia
+                </div>
+                <div class="aside-item">
+                    <label>Student ID</label>
+                    2531041
+                </div>
+                <div class="aside-item">
+                    <label>Major</label>
+                    Information Systems
+                </div>
+                <div class="aside-item">
+                    <label>Semester</label>
+                    2
+                </div>
+                <div class="aside-item" style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #e8d5b0;">
+                    <a href="mailto:jesslynvirginia2@gmail.com">📧 Email</a>
+                </div>
+                <div class="aside-item">
+                    <a href="https://www.instagram.com/jesslynvirginiaa/" target="_blank">📷 Instagram</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main>
+
+            <!-- HERO SECTION -->
+            <section id="about" class="hero">
+                <div class="hero-photo">
+                    <div class="photo-wrap">
+                        <img src="Photo.jpeg" alt="Jesslyn Virginia">
+                    </div>
+                </div>
+                <div class="hero-content">
+                    <h2>Hello!</h2>
+                    <p>
+                        An 18-year-old student at Universitas Internasional Batam, pursuing a 
+                        Bachelor's in Information Systems. I find peace in music, painting, and 
+                        quiet moments with my own thoughts.
+                    </p>
+                    <p>
+                        Some days I feel motivated, other days I feel lost, but I'm learning it's 
+                        okay to move at my own pace.
+                    </p>
+                    <p style="font-style: italic; margin-top: 15px; color: #9c8060;">
+                        "I'm still figuring things out — and that's perfectly okay."
+                    </p>
+                    <a href="https://www.instagram.com/jesslynvirginiaa/" target="_blank">↗ Instagram</a>
+                </div>
             </section>
 
-        <!-- ===== BIODATA ===== -->
-            <section id="biodata" class="section">
-                <p class="section-title">Biodata</p>
+            <!-- BIODATA SECTION -->
+            <section id="biodata" class="card">
+                <h2>Biodata</h2>
                 <div class="bio-grid">
                     <div class="bio-item">
                         <div class="bio-label">Full Name</div>
@@ -585,61 +637,10 @@ main {
                 </div>
             </section>
 
-        <!-- ===== PLAYLIST ===== -->
-            <section id="playlist" class="section">
-                <p class="section-title">Playlist</p>
-                <div class="song-list">
-
-                    <div class="song-item" id="item-song1">
-                        <span class="song-number">01</span>
-                        <div class="song-info">
-                            <div class="song-title">梦臆</div>
-                            <div class="song-artist">邹沛沛</div>
-                        </div>
-                        <button class="play-btn" onclick="playSong('song1', this, 'item-song1')">▶</button>
-                    </div>
-
-                    <div class="song-item" id="item-song2">
-                        <span class="song-number">02</span>
-                        <div class="song-info">
-                            <div class="song-title">惦念你</div>
-                            <div class="song-artist">邹沛沛</div>
-                        </div>
-                        <button class="play-btn" onclick="playSong('song2', this, 'item-song2')">▶</button>
-                    </div>
-
-                    <div class="song-item" id="item-song3">
-                        <span class="song-number">03</span>
-                        <div class="song-info">
-                            <div class="song-title">沉溺</div>
-                            <div class="song-artist">邹沛沛</div>
-                        </div>
-                        <button class="play-btn" onclick="playSong('song3', this, 'item-song3')">▶</button>
-                    </div>
-
-                    <div class="song-item" id="item-song4">
-                        <span class="song-number">04</span>
-                        <div class="song-info">
-                            <div class="song-title">恋人未满</div>
-                            <div class="song-artist">胜屿</div>
-                        </div>
-                        <button class="play-btn" onclick="playSong('song4', this, 'item-song4')">▶</button>
-                    </div>
-
-                </div>
-
-            <!-- hidden audio files -->
-                <audio id="song1" src="mengyi.mp3"></audio>
-                <audio id="song2" src="dnn.mp3"></audio>
-                <audio id="song3" src="chenni.mp3"></audio>
-                <audio id="song4" src="lrwm.mp3"></audio>
-            </section>
-
-        <!-- ===== HOBBIES ===== -->
-            <section id="hobby" class="section">
-                <p class="section-title">Hobbies</p>
-                <div class="hobby-row">
-
+            <!-- HOBBIES SECTION -->
+            <section id="hobbies" class="card">
+                <h2>Creative Hobbies</h2>
+                <div class="hobby-gallery">
                     <figure class="hobby-card">
                         <img src="Painting.jpeg" alt="Painting">
                         <figcaption class="hobby-info">
@@ -652,7 +653,7 @@ main {
                         <img src="digi.jpeg" alt="Digital Art">
                         <figcaption class="hobby-info">
                             <div class="hobby-name">Digital Art</div>
-                            <div class="hobby-desc">Thoughts brought to life</div>
+                            <div class="hobby-desc">Thoughts to life</div>
                         </figcaption>
                     </figure>
 
@@ -660,7 +661,7 @@ main {
                         <img src="digi2.jpeg" alt="Digital Art">
                         <figcaption class="hobby-info">
                             <div class="hobby-name">Digital Art</div>
-                            <div class="hobby-desc">Blending colors freely</div>
+                            <div class="hobby-desc">Blending colors</div>
                         </figcaption>
                     </figure>
 
@@ -668,7 +669,7 @@ main {
                         <img src="flower.jpeg" alt="Flower Arrangement">
                         <figcaption class="hobby-info">
                             <div class="hobby-name">Florals</div>
-                            <div class="hobby-desc">Calm in every bloom</div>
+                            <div class="hobby-desc">Calm in blooms</div>
                         </figcaption>
                     </figure>
 
@@ -676,107 +677,185 @@ main {
                         <img src="crochet.jpeg" alt="Crochet">
                         <figcaption class="hobby-info">
                             <div class="hobby-name">Crochet</div>
-                            <div class="hobby-desc">Handcrafted with love</div>
+                            <div class="hobby-desc">Handcrafted love</div>
                         </figcaption>
                     </figure>
 
+                    <figure class="hobby-card">
+                        <img src="journal.jpeg" alt="Junk Journal">
+                        <figcaption class="hobby-info">
+                            <div class="hobby-name">Junk Journal</div>
+                            <div class="hobby-desc">Keep memories eternal</div>
+                        </figcaption>
+                    </figure>
                 </div>
-                <p class="hobby-note">These hobbies help me balance study and life.</p>
+                <p style="margin-top: 15px; font-style: italic; font-size: 0.9rem; color: #9c8060;">
+                    These hobbies help me balance study and life.
+                </p>
             </section>
 
-        <!-- ===== SCHEDULE ===== -->
-            <section id="schedule" class="section">
-                <p class="section-title">Class Schedule</p>
-                <div style="overflow-x: auto;">
-                    <table class="schedule-table">
-                        <thead>
-                            <tr>
-                                <th>Day</th>
-                                <th>Time</th>
-                                <th>Course</th>
-                                <th>Room</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Monday</td>   <td>09:00 – 10:40</td><td>English II</td>        <td>A412</td></tr>
-                            <tr><td>Monday</td>   <td>13:10 – 15:40</td><td>Operating Systems</td> <td>A314</td></tr>
-                            <tr><td>Monday</td>   <td>20:35 – 22:15</td><td>Pancasila</td>         <td>Online</td></tr>
-                            <tr><td>Tuesday</td>  <td>09:00 – 11:30</td><td>Database Systems</td>  <td>A316</td></tr>
-                            <tr><td>Tuesday</td>  <td>13:10 – 15:40</td><td>Web Design</td>        <td>A316</td></tr>
-                            <tr><td>Wednesday</td><td>09:00 – 11:30</td><td>Data Structures</td>   <td>A406</td></tr>
-                            <tr><td>Wednesday</td><td>13:10 – 15:40</td><td>2D Animation</td>      <td>A406</td></tr>
-                        </tbody>
-                    </table>
+            <!-- PLAYLIST SECTION -->
+            <section id="playlist" class="card">
+                <h2>Favorite Playlist</h2>
+                <div class="song-grid">
+                    <div class="song-card">
+                        <div class="song-number">01</div>
+                        <div class="song-title">梦臆</div>
+                        <div class="song-artist">邹沛沛</div>
+                        <button class="play-btn" onclick="playSong('song1', this)">▶</button>
+                    </div>
+
+                    <div class="song-card">
+                        <div class="song-number">02</div>
+                        <div class="song-title">惦念你</div>
+                        <div class="song-artist">邹沛沛</div>
+                        <button class="play-btn" onclick="playSong('song2', this)">▶</button>
+                    </div>
+
+                    <div class="song-card">
+                        <div class="song-number">03</div>
+                        <div class="song-title">沉溺</div>
+                        <div class="song-artist">邹沛沛</div>
+                        <button class="play-btn" onclick="playSong('song3', this)">▶</button>
+                    </div>
+
+                    <div class="song-card">
+                        <div class="song-number">04</div>
+                        <div class="song-title">恋人未满</div>
+                        <div class="song-artist">胜屿</div>
+                        <button class="play-btn" onclick="playSong('song4', this)">▶</button>
+                    </div>
                 </div>
+
+                <audio id="song1" src="mengyi.mp3"></audio>
+                <audio id="song2" src="dnn.mp3"></audio>
+                <audio id="song3" src="chenni.mp3"></audio>
+                <audio id="song4" src="lrwm.mp3"></audio>
+
             </section>
 
-        </div>
+            <!-- SCHEDULE SECTION -->
+            <section id="schedule" class="card">
+                <h2>Class Schedule</h2>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Time</th>
+                            <th>Course</th>
+                            <th>Room</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monday</td>
+                            <td>09:00 – 10:40</td>
+                            <td>English II</td>
+                            <td>A412</td>
+                        </tr>
+                        <tr>
+                            <td>Monday</td>
+                            <td>13:10 – 15:40</td>
+                            <td>Operating Systems</td>
+                            <td>A314</td>
+                        </tr>
+                        <tr>
+                            <td>Monday</td>
+                            <td>20:35 – 22:15</td>
+                            <td>Pancasila</td>
+                            <td>Online</td>
+                        </tr>
+                        <tr>
+                            <td>Tuesday</td>
+                            <td>09:00 – 11:30</td>
+                            <td>Database Systems</td>
+                            <td>A316</td>
+                        </tr>
+                        <tr>
+                            <td>Tuesday</td>
+                            <td>13:10 – 15:40</td>
+                            <td>Web Design</td>
+                            <td>A316</td>
+                        </tr>
+                        <tr>
+                            <td>Wednesday</td>
+                            <td>09:00 – 11:30</td>
+                            <td>Data Structures</td>
+                            <td>A406</td>
+                        </tr>
+                        <tr>
+                            <td>Wednesday</td>
+                            <td>13:10 – 15:40</td>
+                            <td>2D Animation</td>
+                            <td>A406</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </main>
+
+        <!-- RIGHT ASIDE -->
+        <aside class="right-aside">
+            <h3 class="aside-title">Quick Stats</h3>
+            <div class="stat-box">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Creative Hobbies</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Favorite Songs</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">18</div>
+                <div class="stat-label">Years Old</div>
+            </div>
+        </aside>
+
     </div>
 
-</main>
-<!-- ================================
-     JAVASCRIPT
-================================ -->
-<script>
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Jesslyn Virginia. All rights reserved.</p>
+        <p><a href="#biodata">Back to Top</a></p>
+    </footer>
 
-// ---- SWITCH TAB FUNCTION ----
-function openTab(tabName, button) {
+    <!-- JAVASCRIPT -->
+    <script>
+        let currentAudio = null;      // Track lagu yang sedang main
+        let currentButton = null;     // Track button yang aktif
 
-    // 1. hide all sections
-    document.querySelectorAll('.section').forEach(function(s) {
-        s.classList.remove('active');
-    });
-
-    // 2. deactivate all tab buttons
-    document.querySelectorAll('.tabs button').forEach(function(b) {
-        b.classList.remove('active');
-    });
-
-    // 3. show the selected section
-    document.getElementById(tabName).classList.add('active');
-
-    // 4. mark the clicked button as active
-    button.classList.add('active');
-}
-
-
-// ---- PLAY / PAUSE SONG FUNCTION ----
-function playSong(songId, button, itemId) {
-
-    // get the audio element by id
-    var song = document.getElementById(songId);
-
-    // 1. stop all other songs first
-    document.querySelectorAll('audio').forEach(function(a) {
-        if (a !== song) {
-            a.pause();
-            a.currentTime = 0;
+        function playSong(songId, btn) {
+            const audio = document.getElementById(songId);
+    
+    // ▶️ Jika click button lagu YANG SAMA (TOGGLE pause/resume)
+            if (currentAudio === audio) {
+                if (audio.paused) {
+                    audio.play();      // ← Resume dari posisi terakhir
+                    btn.textContent = '⏸';
+                } else {
+                    audio.pause();     // ← Pause di posisi sekarang
+                    btn.textContent = '▶';
+                }
+            } 
+    // 🎵 Jika click button lagu BERBEDA
+            else {
+        // Stop lagu yang lama
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                }
+        
+        // Play lagu baru
+                audio.play();
+                btn.textContent = '⏸';
+        
+        // Update tracking
+                currentAudio = audio;
+                currentButton = btn;
+            }
         }
-    });
-
-    // 2. reset all buttons and row highlights
-    document.querySelectorAll('.play-btn').forEach(function(b) {
-        b.textContent = '▶';
-        b.classList.remove('paused');
-    });
-    document.querySelectorAll('.song-item').forEach(function(item) {
-        item.classList.remove('playing');
-    });
-
-    // 3. play or pause the clicked song
-    if (song.paused) {
-        song.play();
-        button.textContent = '⏸';
-        button.classList.add('paused');
-        document.getElementById(itemId).classList.add('playing');
-    } else {
-        song.pause();
-        button.textContent = '▶';
-        button.classList.remove('paused');
-    }
-}
-
-</script>
+    </script>
 
 </body>
 </html>
