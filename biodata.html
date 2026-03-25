@@ -4,738 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jesslyn Virginia</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 40px;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f0ebe3 0%, #e2d5c3 100%);
-            color: #2a2118;
-            min-height: 100vh;
-            display: flex;
-        }
-
-        /* ================================
-           SPLASH SCREEN
-        ================================ */
-        #splash {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(135deg, #f0ebe3 0%, #e2d5c3 100%);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        #splash.hide {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .splash-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            font-weight: 600;
-            color: #2a2118;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 1s ease 0.3s forwards;
-        }
-
-        .splash-line {
-            width: 0px;
-            height: 1px;
-            background: #c9a96e;
-            animation: expandLine 1s ease 0.5s forwards;
-        }
-
-        .splash-sub {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #c9a96e;
-            opacity: 0;
-            animation: fadeUp 1s ease 0.7s forwards;
-        }
-
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes expandLine {
-            to { width: 80px; }
-        }
-
-        /* ================================
-           LEFT SIDEBAR NAV
-        ================================ */
-        .sidebar {
-            width: 230px;
-            min-height: 100vh;
-            background: rgba(250, 245, 235, 0.97);
-            border-right: 1px solid #e8d5b0;
-            box-shadow: 2px 0 16px rgba(42, 33, 24, 0.07);
-            position: fixed;
-            top: 0;
-            left: 0;
-            display: flex;
-            flex-direction: column;
-            z-index: 100;
-            padding: 0 0 30px 0;
-        }
-
-        .sidebar-brand {
-            padding: 32px 24px 24px 24px;
-            border-bottom: 1px solid #e8d5b0;
-        }
-
-        .sidebar-brand h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.45rem;
-            font-weight: 600;
-            color: #2a2118;
-            line-height: 1.2;
-        }
-
-        .sidebar-brand .brand-sub {
-            font-size: 0.7rem;
-            color: #c9a96e;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-top: 4px;
-        }
-
-        nav {
-            display: flex;
-            flex-direction: column;
-            padding: 24px 16px;
-            gap: 4px;
-            flex: 1;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #6b5c45;
-            font-size: 0.88rem;
-            font-weight: 500;
-            padding: 10px 14px;
-            border-radius: 8px;
-            transition: all 0.25s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            position: relative;
-        }
-
-        nav a .nav-icon {
-            font-size: 1rem;
-            width: 20px;
-            text-align: center;
-        }
-
-        nav a:hover {
-            background: rgba(201, 169, 110, 0.1);
-            color: #c9a96e;
-        }
-
-        nav a.active {
-            background: rgba(201, 169, 110, 0.15);
-            color: #c9a96e;
-            font-weight: 600;
-        }
-
-        nav a.active::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 3px;
-            height: 60%;
-            background: #c9a96e;
-            border-radius: 0 2px 2px 0;
-        }
-
-        .sidebar-info {
-            padding: 16px 20px;
-            border-top: 1px solid #e8d5b0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .sidebar-info a {
-            font-size: 0.8rem;
-            color: #6b5c45;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            transition: color 0.2s;
-        }
-
-        .sidebar-info a:hover {
-            color: #c9a96e;
-        }
-
-        /* ================================
-           PAGE WRAPPER
-        ================================ */
-        .page-wrapper {
-            margin-left: 230px;
-            flex: 1;
-            display: flex;
-            gap: 0;
-            padding-right: 20px;
-            padding-left: 20px;
-        }
-
-        /* ================================
-           MAIN CONTENT
-        ================================ */
-        .main-area {
-            flex: 1;
-            padding: 20px 20px;
-            min-width: 0px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        /* ================================
-           RIGHT ASIDE
-        ================================ */
-        .right-aside {
-            width: 220px;
-            padding: 20px 0 20px 20px;
-            flex-shrink: 0;
-        }
-
-        .right-aside-inner {
-            background: rgba(255, 252, 247, 0.45);
-            border: 1px solid rgba(232, 213, 176, 0.5);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(42, 33, 24, 0.04);
-            position: sticky;
-            top: 20px;
-            backdrop-filter: blur(6px);
-        }
-
-        .aside-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #2a2118;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(232, 213, 176, 0.6);
-        }
-
-        .stat-box {
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 1px solid rgba(232, 213, 176, 0.5);
-        }
-
-        .stat-box:last-child {
-            border-bottom: none;
-        }
-
-        .stat-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 600;
-            color: #c9a96e;
-        }
-
-        .stat-label {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #9c8060;
-            font-weight: 600;
-            margin-top: 4px;
-        }
-
-        /* FUN FACTS */
-        .funfact-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 5px;
-        }
-
-        .funfact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            font-size: 0.8rem;
-            color: #6b5c45;
-            line-height: 1.5;
-        }
-
-        .funfact-item .ff-icon {
-            font-size: 0.9rem;
-            flex-shrink: 0;
-            margin-top: 1px;
-        }
-
-        .aside-quote {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 0.95rem;
-        font-style: italic;
-        color: #6b5c45;
-        line-height: 1.6;
-        }
-        /* ================================
-           HERO
-        ================================ */
-        .hero {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-            background: rgba(255, 252, 247, 0.9);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(42, 33, 24, 0.08);
-        }
-
-        .photo-wrap {
-            width: 200px;
-            height: 250px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(42, 33, 24, 0.15);
-            flex-shrink: 0;
-            transition: transform 0.4s ease;
-        }
-
-        .photo-wrap:hover {
-            transform: scale(1.04) rotate(0.5deg);
-        }
-
-        .photo-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-content h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #2a2118;
-        }
-
-        .hero-content p {
-            font-size: 0.92rem;
-            color: #6b5c45;
-            line-height: 1.8;
-            margin-bottom: 10px;
-        }
-
-        .hero-content a {
-            display: inline-block;
-            margin-top: 10px;
-            font-size: 0.82rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: #c9a96e;
-            text-decoration: none;
-            border-bottom: 1px solid #e8d5b0;
-            padding-bottom: 2px;
-            transition: color 0.2s;
-        }
-
-        .hero-content a:hover { color: #8b6f47; }
-
-        /* ================================
-           CARD
-        ================================ */
-        .card {
-            background: rgba(255, 252, 247, 0.9);
-            border: 1px solid #e8d5b0;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 12px rgba(42, 33, 24, 0.08);
-        }
-
-        .card h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #2a2118;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .card h2::after {
-            content: '';
-            display: inline-block;
-            width: 28px;
-            height: 1px;
-            background: #c9a96e;
-        }
-
-        /* BIODATA */
-        .bio-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .bio-item {
-            background: rgba(255, 255, 255, 0.6);
-            padding: 12px 15px;
-            border: 1px solid #e8d5b0;
-            border-radius: 6px;
-        }
-
-        .bio-label {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #c9a96e;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .bio-value {
-            font-size: 0.92rem;
-            color: #2a2118;
-            font-weight: 500;
-        }
-
-        /* HOBBIES */
-        .hobby-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .hobby-card {
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #e8d5b0;
-            background: rgba(255, 255, 255, 0.6);
-            transition: all 0.3s ease;
-        }
-
-        .hobby-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 24px rgba(42, 33, 24, 0.1);
-        }
-
-        .hobby-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-            display: block;
-        }
-
-        .hobby-card:hover img { transform: scale(1.08); }
-
-        .hobby-info {
-            padding: 8px 6px;
-            text-align: center;
-        }
-
-        .hobby-name {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #2a2118;
-        }
-
-        .hobby-desc {
-            font-size: 0.7rem;
-            color: #c9a96e;
-            margin-top: 3px;
-        }
-
-        /* PLAYLIST */
-        .song-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-        }
-
-        .song-card {
-            background: rgba(255, 255, 255, 0.6);
-            padding: 15px;
-            border: 1px solid #e8d5b0;
-            border-radius: 6px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .song-card:hover {
-            background: rgba(201, 169, 110, 0.08);
-            border-color: rgba(201, 169, 110, 0.5);
-        }
-
-        .song-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #c9a96e;
-        }
-
-        .song-title {
-            font-size: 0.92rem;
-            color: #2a2118;
-            font-weight: 500;
-            margin: 8px 0 5px 0;
-        }
-
-        .song-artist {
-            font-size: 0.82rem;
-            color: #c9a96e;
-            margin-bottom: 10px;
-        }
-
-        .play-btn {
-            background: #c9a96e;
-            border: none;
-            color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .play-btn:hover {
-            background: #8b6f47;
-            transform: scale(1.1);
-        }
-
-        /* SCHEDULE */
-        .education-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        .education-table thead {
-            background: rgba(201, 169, 110, 0.1);
-        }
-
-        .education-table th {
-            padding: 12px;
-            text-align: left;
-            font-size: 0.82rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #c9a96e;
-            font-weight: 600;
-            border-bottom: 1px solid #e8d5b0;
-        }
-
-        .education-table td {
-            padding: 12px;
-            color: #6b5c45;
-            border-bottom: 1px solid #e8d5b0;
-            font-size: 0.88rem;
-        }
-
-        .education-table tbody tr:hover {
-            background: rgba(201, 169, 110, 0.05);
-        }
-
-        /* FOOTER */
-        footer {
-            background: rgba(42, 33, 24, 0.9);
-            color: white;
-            text-align: center;
-            padding: 30px 0;
-        }
-
-        footer a {
-            color: #c9a96e;
-            text-decoration: none;
-        }
-
-        /* ================================
-           HAMBURGER (mobile)
-        ================================ */
-        .hamburger {
-            display: none;
-            position: fixed;
-            top: 16px;
-            left: 16px;
-            z-index: 200;
-            background: rgba(255, 252, 247, 0.97);
-            border: 1px solid #e8d5b0;
-            border-radius: 8px;
-            width: 40px;
-            height: 40px;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 5px;
-            padding: 8px;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 20px;
-            height: 2px;
-            background: #6b5c45;
-            border-radius: 2px;
-            transition: all 0.3s;
-        }
-
-        /* ================================
-           RESPONSIVE
-        ================================ */
-        @media (max-width: 1100px) {
-            .right-aside { display: none; }
-            .main-area { max-width: 100%; }
-        }
-
-        @media (max-width: 768px) {
-            .hamburger { display: flex; }
-
-            .sidebar {
-                transform: translateX(-100%);
-                transition: transform 0.3s ease;
-            }
-
-            .sidebar.open {
-                transform: translateX(0);
-            }
-
-            .page-wrapper {
-                margin-left: 0;
-            }
-
-            .main-area {
-                padding: 70px 16px 30px;
-            }
-
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 24px;
-            }
-
-            .bio-grid { grid-template-columns: 1fr; }
-            .song-grid { grid-template-columns: repeat(2, 1fr); }
-            .hobby-gallery { grid-template-columns: repeat(2, 1fr); }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- SPLASH SCREEN -->
-    <div id="splash">
-        <div class="splash-name">Jesslyn Virginia</div>
-        <div class="splash-line"></div>
-        <div class="splash-sub">Information Systems · UIB</div>
+<!-- SPLASH -->
+<div id="splash">
+    <div class="splash-name">Jesslyn Virginia</div>
+    <div class="splash-line"></div>
+    <div class="splash-sub">Information Systems · UIB</div>
+</div>
+
+<!-- HAMBURGER -->
+<button class="hamburger" onclick="toggleSidebar()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+</button>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+        <h1>Jesslyn<br>Virginia</h1>
+        <div class="brand-sub">Information Systems</div>
     </div>
+    <nav id="main-nav">
+        <a href="#home"      class="nav-link" data-target="home">      <span class="nav-icon">⌂</span> Home</a>
+        <a href="#about"     class="nav-link" data-target="about">     <span class="nav-icon">✦</span> About</a>
+        <a href="#biodata"   class="nav-link" data-target="biodata">   <span class="nav-icon">◈</span> Biodata</a>
+        <a href="#portfolio" class="nav-link" data-target="portfolio"> <span class="nav-icon">◻</span> Portfolio</a>
+        <a href="#education" class="nav-link" data-target="education"> <span class="nav-icon">◇</span> Education</a>
+        <a href="#hobbies"   class="nav-link" data-target="hobbies">   <span class="nav-icon">❋</span> Hobbies</a>
+        <a href="#playlist"  class="nav-link" data-target="playlist">  <span class="nav-icon">♪</span> Playlist</a>
+        <a href="#contact"   class="nav-link" data-target="contact">   <span class="nav-icon">✉</span> Contact</a>
+        <a href="#wireframe" class="nav-link" data-target="wireframe"> <span class="nav-icon">⊞</span> Wireframe</a>
+    </nav>
+    <div class="sidebar-info">
+        <a href="mailto:jesslynvirginia2@gmail.com"><i class="fa-solid fa-envelope"></i> E-mail</a>
+        <a href="https://www.instagram.com/jesslynvirginiaa/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        <a href="https://github.com/JesslynVirginia" target="_blank"><i class="fa-brands fa-github"></i> Github</a>
+    </div>
+</aside>
 
-    <!-- HAMBURGER (mobile only) -->
-    <button class="hamburger" onclick="toggleSidebar()" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
+<!-- PAGE WRAPPER -->
+<div class="page-wrapper">
 
-    <!-- LEFT SIDEBAR -->
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-brand">
-            <h1>Jesslyn<br>Virginia</h1>
-            <div class="brand-sub">Information Systems</div>
-        </div>
+    <!-- MAIN CONTENT -->
+    <div class="main-col">
 
-        <nav id="main-nav">
-            <a href="#about" class="active">
-                <span class="nav-icon">✦</span> About
-            </a>
-            <a href="#biodata">
-                <span class="nav-icon">◈</span> Biodata
-            </a>
-            <a href="#hobbies">
-                <span class="nav-icon">◇</span> Hobbies
-            </a>
-            <a href="#playlist">
-                <span class="nav-icon">♪</span> Playlist
-            </a>
-            <a href="#education">
-                <span class="nav-icon">◻</span> Education
-            </a>
-        </nav>
+        <!-- ══ HOME ══ -->
+        <div id="home" data-section="home" class="section-block">
 
-        <div class="sidebar-info">
-            <a href="mailto:jesslynvirginia2@gmail.com"><i class="fa-solid fa-envelope"></i>E-mail</a>
-            <a href="https://www.instagram.com/jesslynvirginiaa/" target="_blank"><i class="fa-brands fa-instagram"></i>Instagram</a>
-            <a hred="https://github.com/JesslynVirginia" target="_blank"><i class="fa-brands fa-github"></i>Github</a>
-        </div>
-    </aside>
+            <div class="slider-wrap">
+                <div class="slide active">
+                    <div class="slide-bg slide-ph-1">
+                        <div class="slide-placeholder">
+                            <img src="photos/slider1.png">
+                        </div>
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Hello, I'm<br>Jesslyn Virginia</h2>
+                        <p>Information Systems student · Universitas Internasional Batam</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-bg slide-ph-2">
+                        <div class="slide-placeholder">
+                            <img src="photos/slider2.png">
+                        </div>
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Art is how I<br>speak silently.</h2>
+                        <p>Painting · Digital Art · Crochet · Florals</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-bg slide-ph-3">
+                        <div class="slide-placeholder">
+                            <img src="photos/slider3.png">
+                        </div>
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h2>Still figuring<br>things out —</h2>
+                        <p>and that's perfectly okay. 🌿</p>
+                    </div>
+                </div>
+                <button class="slider-arrow prev" onclick="changeSlide(-1)">&#8249;</button>
+                <button class="slider-arrow next" onclick="changeSlide(1)">&#8250;</button>
+                <div class="slider-dots">
+                    <button class="dot active" onclick="goToSlide(0)"></button>
+                    <button class="dot" onclick="goToSlide(1)"></button>
+                    <button class="dot" onclick="goToSlide(2)"></button>
+                </div>
+            </div>
 
-    <!-- PAGE WRAPPER -->
-    <div class="page-wrapper">
+            <!-- About anchor — separate scroll target -->
+            <div data-section="about" style="height: 0;"></div>
 
-        <!-- MAIN AREA -->
-        <main class="main-area">
-
-            <!-- HERO -->
-            <section id="about" class="hero">
+            <!-- Hello card -->
+            <div class="hero" id="about">
                 <div class="photo-wrap">
-                    <img src="Photo.jpeg" alt="Jesslyn Virginia">
+                    <img src="photos/Photo.png" alt="Jesslyn Virginia" onerror="this.style.display='none'">
                 </div>
                 <div class="hero-content">
                     <h2>Hello!</h2>
                     <p>
-                        An 18-year-old student at Universitas Internasional Batam, pursuing a 
-                        Bachelor's in Information Systems. I find peace in music, painting, and 
-                        quiet moments with my own thoughts.
+                        I'm <strong>Jesslyn Virginia</strong>, an 18-year-old student at
+                        Universitas Internasional Batam, pursuing a Bachelor's in Information Systems.
+                        I find peace in music, painting, and quiet moments with my own thoughts.
                     </p>
                     <p>
-                        Some days I feel motivated, other days I feel lost, but I'm learning it's 
-                        okay to move at my own pace.
+                        Some days I feel motivated, other days I feel lost, but I'm learning
+                        it's okay to move at my own pace.
                     </p>
-                    <p style="font-style: italic; margin-top: 15px; color: #9c8060;">
+                    <p class="hero-quote">
                         "I'm still figuring things out — and that's perfectly okay."
                     </p>
                     <a href="https://www.instagram.com/jesslynvirginiaa/" target="_blank">↗ Instagram</a>
                 </div>
-            </section>
+            </div>
 
-            <!-- BIODATA -->
-            <section id="biodata" class="card">
+        </div>
+
+
+        <!-- ══ BIODATA ══ -->
+        <div id="biodata" data-section="biodata" class="section-block">
+            <div class="card">
                 <h2>Biodata</h2>
                 <div class="bio-grid">
                     <div class="bio-item">
@@ -756,69 +153,217 @@
                     </div>
                     <div class="bio-item">
                         <div class="bio-label">Semester</div>
-                        <div class="bio-value">2</div>
+                        <div class="bio-value">2 </div>
                     </div>
                     <div class="bio-item">
                         <div class="bio-label">Email</div>
                         <div class="bio-value">jesslynvirginia2@gmail.com</div>
                     </div>
+                    <div class="bio-item">
+                        <div class="bio-label">City</div>
+                        <div class="bio-value">Batam, Indonesia</div>
+                    </div>
+                    <div class="bio-item">
+                        <div class="bio-label">Phone Number</div>
+                        <div class="bio-value">0882 7985 8487</div>
+                    </div>
                 </div>
-            </section>
+            </div>
+        </div>
 
-            <!-- HOBBIES -->
-            <section id="hobbies" class="card">
+
+        <!-- ══ PORTFOLIO ══ -->
+        <!-- ══ PORTFOLIO ══ -->
+<div id="portfolio" data-section="portfolio" class="section-block">
+    <div class="card">
+        <h2>Portfolio</h2>
+
+        <p class="portfolio-section-label">Academic Projects</p>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <div class="portfolio-thumb pt-bg1"><img src="photos/poster.jpg"></div>
+                <div class="portfolio-info">
+                    <div class="portfolio-tag">Poster</div>
+                    <div class="portfolio-name">Event Poster</div>
+                    <div class="portfolio-desc">Art Exhibition Poster for Multimedia System course.</div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-thumb pt-bg2"><img src="photos/game.png"></div>
+                <div class="portfolio-info">
+                    <div class="portfolio-tag">Game</div>
+                    <div class="portfolio-name">Game Project</div>
+                    <div class="portfolio-desc">Pygame code and Pixel design for Programming Technique's Expo.</div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-thumb pt-bg3"><img src="photos/uiux.png"></div>
+                <div class="portfolio-info">
+                    <div class="portfolio-tag">UI/UX Design</div>
+                    <div class="portfolio-name">App Prototype</div>
+                    <div class="portfolio-desc">Mobile app wireframe and prototype design using Figma.</div>
+                </div>
+            </div>
+        </div>
+
+        <p class="portfolio-section-label">Artworks & Creations</p>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <div class="portfolio-thumb-sm pt-bg1">
+                    <img src="photos/paintingp.jpeg" alt="Painting" onerror="this.parentElement.innerHTML='<div class=\'pt-ph\'>🎨</div>'">
+                </div>
+                <div class="portfolio-info">
+                    <div class="portfolio-tag">Painting</div>
+                    <div class="portfolio-name">Acrylic on Canvas</div>
+                    <div class="portfolio-desc">Emotions channeled through color and brushstrokes.</div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-thumb-sm pt-bg2">
+                    <img src="photos/digip1.jpeg" alt="Digital Art" onerror="this.parentElement.innerHTML='<div class=\'pt-ph\'>✏️</div>'">
+                </div>
+                <div class="portfolio-info">
+                    <div class="portfolio-tag">Digital Art</div>
+                    <div class="portfolio-name">Digital Illustration</div>
+                    <div class="portfolio-desc">Bringing imagination to life through digital brushes.</div>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-thumb-sm pt-bg3">
+                    <img src="photos/digip2.jpeg" alt="Digital Art" onerror="this.parentElement.innerHTML='<div class=\'pt-ph\'>✏️</div>'">
+                </div>
+                <div class="portfolio-info">
+                    <div class="portfolio-tag">Digital Art</div>
+                    <div class="portfolio-name">Digital Illustration</div>
+                    <div class="portfolio-desc">Bringing imagination to life through digital brushes.</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+        <!-- ══ EDUCATION ══ -->
+        <div id="education" data-section="education" class="section-block">
+            <div class="card">
+                <h2>Educational Background</h2>
+                <table class="edu-table">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Institution</th>
+                            <th>Level</th>
+                            <th>Major / Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2011–2013</td>
+                            <td>TK Maitreyawira Batam</td>
+                            <td><span class="edu-badge">Kindergarten</span></td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>2013–2019</td>
+                            <td>SD Putra Batam</td>
+                            <td><span class="edu-badge">Elementary</span></td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>2019–2022</td>
+                            <td>SMP Putra Batam</td>
+                            <td><span class="edu-badge">Junior High</span></td>
+                            <td>—</td>
+                        </tr>
+                        <tr>
+                            <td>2022–2025</td>
+                            <td>SMA Maitreyawira Batam</td>
+                            <td><span class="edu-badge">Senior High</span></td>
+                            <td>Social Science (IPS)</td>
+                        </tr>
+                        <tr>
+                            <td>2025–Now</td>
+                            <td>Universitas Internasional Batam</td>
+                            <td><span class="edu-badge">University</span></td>
+                            <td>Information Systems</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- ══ HOBBIES ══ -->
+        <div id="hobbies" data-section="hobbies" class="section-block">
+            <div class="card">
                 <h2>Hobbies</h2>
                 <div class="hobby-gallery">
                     <figure class="hobby-card">
-                        <img src="Painting.jpeg" alt="Painting">
+                        <div class="hobby-img-wrap">
+                            <img src="photos/paintingh.jpeg" alt="Painting" onerror="this.parentElement.outerHTML='<div class=\'hobby-thumb-ph hp-bg1\'>🎨</div>'">
+                        </div>
                         <figcaption class="hobby-info">
                             <div class="hobby-name">Painting</div>
                             <div class="hobby-desc">Emotions through color</div>
                         </figcaption>
                     </figure>
                     <figure class="hobby-card">
-                        <img src="digi.jpeg" alt="Digital Art">
+                        <div class="hobby-img-wrap">
+                            <img src="photos/digih.jpeg" alt="Digital Art" onerror="this.parentElement.outerHTML='<div class=\'hobby-thumb-ph hp-bg2\'>✏️</div>'">
+                        </div>
                         <figcaption class="hobby-info">
                             <div class="hobby-name">Digital Art</div>
+                            <div class="hobby-desc">Blending Colors</div>
+                        </figcaption>
+                    </figure>
+                    <figure class="hobby-card">
+                        <div class="hobby-img-wrap">
+                            <img src="photos/tradih.jpeg" alt="Digital Art 2" onerror="this.parentElement.outerHTML='<div class=\'hobby-thumb-ph hp-bg3\'>🖌️</div>'">
+                        </div>
+                        <figcaption class="hobby-info">
+                            <div class="hobby-name">Traditional Art</div>
                             <div class="hobby-desc">Thoughts to life</div>
                         </figcaption>
                     </figure>
                     <figure class="hobby-card">
-                        <img src="digi2.jpeg" alt="Digital Art">
-                        <figcaption class="hobby-info">
-                            <div class="hobby-name">Digital Art</div>
-                            <div class="hobby-desc">Blending colors</div>
-                        </figcaption>
-                    </figure>
-                    <figure class="hobby-card">
-                        <img src="flower.jpeg" alt="Flower Arrangement">
+                        <div class="hobby-img-wrap">
+                            <img src="photos/flower.jpeg" alt="Florals" onerror="this.parentElement.outerHTML='<div class=\'hobby-thumb-ph hp-bg1\'>🌸</div>'">
+                        </div>
                         <figcaption class="hobby-info">
                             <div class="hobby-name">Florals</div>
                             <div class="hobby-desc">Calm in blooms</div>
                         </figcaption>
                     </figure>
                     <figure class="hobby-card">
-                        <img src="crochet.jpeg" alt="Crochet">
+                        <div class="hobby-img-wrap">
+                            <img src="photos/crochet.jpeg" alt="Crochet" onerror="this.parentElement.outerHTML='<div class=\'hobby-thumb-ph hp-bg2\'>🧶</div>'">
+                        </div>
                         <figcaption class="hobby-info">
                             <div class="hobby-name">Crochet</div>
                             <div class="hobby-desc">Handcrafted love</div>
                         </figcaption>
                     </figure>
                     <figure class="hobby-card">
-                        <img src="journal.jpeg" alt="Junk Journal">
+                        <div class="hobby-img-wrap">
+                            <img src="photos/journal.jpeg" alt="Junk Journal" onerror="this.parentElement.outerHTML='<div class=\'hobby-thumb-ph hp-bg3\'>📔</div>'">
+                        </div>
                         <figcaption class="hobby-info">
                             <div class="hobby-name">Junk Journal</div>
                             <div class="hobby-desc">Keep memories eternal</div>
                         </figcaption>
                     </figure>
                 </div>
-                <p style="margin-top: 15px; font-style: italic; font-size: 0.88rem; color: #9c8060;">
-                    These hobbies help me balance study and life.
+                <p class="hobbies-note">
+                    These hobbies help me balance study and life. ✨
                 </p>
-            </section>
+            </div>
+        </div>
 
-            <!-- PLAYLIST -->
-            <section id="playlist" class="card">
+
+        <!-- ══ PLAYLIST ══ -->
+        <div id="playlist" data-section="playlist" class="section-block">
+            <div class="card">
                 <h2>Favorite Playlist</h2>
                 <div class="song-grid">
                     <div class="song-card">
@@ -846,150 +391,133 @@
                         <button class="play-btn" onclick="playSong('song4', this)">▶</button>
                     </div>
                 </div>
-                <audio id="song1" src="mengyi.mp3"></audio>
-                <audio id="song2" src="dnn.mp3"></audio>
-                <audio id="song3" src="chenni.mp3"></audio>
-                <audio id="song4" src="lrwm.mp3"></audio>
-            </section>
-
-            <!-- SCHEDULE -->
-            <section id="education" class="card">
-                <h2>Educational Background</h2>
-                <table class="education-table">
-                    <thead>
-                        <tr>
-                            <th>Year</th>
-                            <th>Institution</th>
-                            <th>Level</th>
-                            <th>Major</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>2011-2013</td><td>TK Maitreyawira Batam</td><td>Kindergarten</td><td>-</td></tr>
-                        <tr><td>2013-2019</td><td>SD Putra Batam</td><td>Elementary School</td><td>-</td></tr>
-                        <tr><td>2019-2022</td><td>SMP Putra Batam</td><td>Junior High School</td><td>-</td></tr>
-                        <tr><td>2022-2025</td><td>SMA Maitreyawira Batam</td><td>Senior High School</td><td>Social Science</td></tr>
-                        <tr><td>2025-Now</td><td>Universitas Internasional Batam</td><td>University</td><td>Information Systems</td></tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <!-- FOOTER -->
-            <footer style="border-radius: 12px; overflow: hidden;">
-                <p>Crafted with care — Jesslyn Virginia, 2026.</p>
-                <p style="margin-top: 6px;"><a href="#about">Back to Top ↑</a></p>
-            </footer>
-
-        </main>
-
-        <!-- RIGHT ASIDE -->
-        <aside class="right-aside">
-            <div class="right-aside-inner">
-
-                <h3 class="aside-title">Quick Stats</h3>
-                <div class="stat-box">
-                    <div class="stat-number">5</div>
-                    <div class="stat-label">Hobbies</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">4</div>
-                    <div class="stat-label">Favorite Songs</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">18</div>
-                    <div class="stat-label">Years Old</div>
-                </div>
-
-                <h3 class="aside-title" style="margin-top: 20px;">Fun Facts</h3>
-                <div class="funfact-list">
-                    <div class="funfact-item">
-                        <span class="ff-icon">🐶</span>
-                        <span>I have a dog</span>
-                    </div>
-                    <div class="funfact-item">
-                        <span class="ff-icon">🌧️</span>
-                        <span>Loves rainy days</span>
-                    </div>
-                    <div class="funfact-item">
-                        <span class="ff-icon">🎧</span>
-                        <span>Can't live without Spotify</span>
-                    </div>
-                    <h3 class="aside-title mt">Quote</h3>
-                    <p class="aside-quote">"If you're hungry, eat."</p>
-                </div>
-
+                <audio id="song1" src="songs/mengyi.mp3"></audio>
+                <audio id="song2" src="songs/dnn.mp3"></audio>
+                <audio id="song3" src="songs/chenni.mp3"></audio>
+                <audio id="song4" src="songs/lrwm.mp3"></audio>
             </div>
-        </aside>
+        </div>
 
-    </div>
 
-    <script>
-        let currentAudio = null;
-        let currentButton = null;
+        <!-- ══ CONTACT ══ -->
+        <div id="contact" data-section="contact" class="section-block">
+            <div class="card">
+                <h2>Contact</h2>
+                <div class="contact-wrap">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <div class="contact-label">Email</div>
+                                <div class="contact-val">jesslynvirginia2@gmail.com</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fa-brands fa-instagram"></i></div>
+                            <div>
+                                <div class="contact-label">Instagram</div>
+                                <div class="contact-val">@jesslynvirginiaa</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+                            <div>
+                                <div class="contact-label">GitHub</div>
+                                <div class="contact-val">JesslynVirginia</div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <div class="contact-label">Location</div>
+                                <div class="contact-val">Batam, Indonesia</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="form-group">
+                            <label class="form-label">Your Name</label>
+                            <input type="text" class="form-input" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-textarea" placeholder="Write your message here..."></textarea>
+                        </div>
+                        <button class="btn-send" onclick="handleFormSubmit()">
+                            <i class="fa-solid fa-paper-plane"></i> &nbsp;Send Message
+                        </button>
+                        <p id="form-msg" class="form-success" style="display: none;">
+                            ✓ Message sent! Thank you 🌸
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        function playSong(songId, btn) {
-            const audio = document.getElementById(songId);
-            if (currentAudio === audio) {
-                if (audio.paused) {
-                    audio.play();
-                    btn.textContent = '⏸';
-                } else {
-                    audio.pause();
-                    btn.textContent = '▶';
-                }
-            } else {
-                if (currentAudio) {
-                    currentAudio.pause();
-                    currentAudio.currentTime = 0;
-                    if (currentButton) currentButton.textContent = '▶';
-                }
-                audio.play();
-                btn.textContent = '⏸';
-                currentAudio = audio;
-                currentButton = btn;
-            }
-        }
 
-        // Active nav highlight
-        function updateActiveNav() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('#main-nav a');
-            let current = '';
-            sections.forEach(section => {
-                if (window.scrollY >= section.offsetTop - 120) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        }
+        <!-- ══ WIREFRAME ══ -->
+        <div id="wireframe" data-section="wireframe" class="section-block">
+            <div class="card">
+                <h2>Wireframe</h2>
+                <div class="wireframe-wrap">
+                    <p class="wireframe-desc">
+                        This is the wireframe / blueprint of this personal website. It shows the layout
+                        structure, navigation flow, and content placement before the actual design was built.
+                    </p>
+                    
+                    <a href="wireframe.pdf" target="_blank" class="btn-pdf">
+                        <i class="fa-solid fa-file-pdf"></i> &nbsp;View Wireframe PDF
+                    </a>
+                </div>
+            </div>
+        </div>
 
-        window.addEventListener('scroll', updateActiveNav);
-        updateActiveNav();
 
-        // Splash screen
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('splash').classList.add('hide');
-            }, 2200);
-        });
+        <!-- FOOTER -->
+        <footer>
+            <p>Crafted with care — Jesslyn Virginia, 2026.</p>
+            <p class="footer-back"><a href="#home">Back to Top ↑</a></p>
+        </footer>
 
-        // Mobile sidebar toggle
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('open');
-        }
+    </div><!-- end main-col -->
 
-        // Close sidebar on nav link click (mobile)
-        document.querySelectorAll('#main-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('sidebar').classList.remove('open');
-            });
-        });
-    </script>
+
+    <!-- RIGHT ASIDE — single sticky box -->
+    <aside class="right-aside">
+        <div class="right-aside-inner">
+            <h3 class="aside-title">Quick Stats</h3>
+            <div class="stat-box">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Hobbies</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Favorite Songs</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">18</div>
+                <div class="stat-label">Years Old</div>
+            </div>
+
+            <h3 class="aside-title aside-title-mt">Fun Facts</h3>
+            <div class="funfact-list">
+                <div class="funfact-item"><span>🐶</span><span>I have a dog</span></div>
+                <div class="funfact-item"><span>🌧️</span><span>Loves rainy days</span></div>
+                <div class="funfact-item"><span>🎧</span><span>Can't live without Spotify</span></div>
+            </div>
+
+            <h3 class="aside-title aside-title-mt">Quote</h3>
+            <p class="aside-quote">"If you're hungry, eat."</p>
+        </div>
+    </aside>
+
+</div><!-- end page-wrapper -->
+
+<script src="script.js"></script>
 
 </body>
 </html>
